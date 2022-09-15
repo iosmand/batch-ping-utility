@@ -1,9 +1,12 @@
 #!/bin/bash
-FILES=$(cat $1)
 if [ -z "$1" ]; then
-  echo "First parameter not supplied."
-	exit 1
+  echo "Usage: ./ping.sh INPUT_FILE PING_COUNT"
+  echo "In the INPUT_FILE IP Addresses should list with spaces NOT ROWS. (8.8.8.8 8.8.4.4 1.1.1.1)"
+	echo "PING_COUNT is number of packets per IP Address. default=10"
+  exit 1
 fi
+
+iplist=$(cat $1)
 
 if [ -z ${2+x} ]; then times=10; else times=$2; fi
 
